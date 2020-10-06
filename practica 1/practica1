@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+usr=$users
+
+curl http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=$users
+
+curl http://api.openweathermap.org/data/2.5/weather?q=Monterrey,$users
