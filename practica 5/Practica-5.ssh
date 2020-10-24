@@ -1,0 +1,49 @@
+#!/bin/bash
+dir_file=$(find /home/david -name msg.txt)
+separador=$(md5sum $dir_file)
+IFS1=' '
+read -a p_separada <<< "$separador"
+echo "Proceso de comprobacion MD5"
+if [ "40744679dff4bf36705c00f9cb815579" == $p_separada ];
+then
+echo "Imagen Correcta"
+cat $dir_file | base64 msg.txt > msg1.txt
+else
+echo "Archivo Corrupto"
+fi
+dir_file2=$(find /home/david -name fcfm.png)
+separador=$(md5sum $dir_file2)
+IFS2=' '
+read -a p_separada2 <<< "$separador"
+echo "Proceso de comprobacion MD5"
+if [ "4260808329804b5f553cf3e3d5a446c6" == $p_separada2 ];
+then
+echo "Imagen Correcta"
+cat $dir_file2 | base64 fcfm.png > fcfm.png
+else
+echo "Archivo Corrupto"
+fi
+dir_file3=$(find /home/david -name mystery_img1.txt)
+separador=$(md5sum $dir_file3)
+IFS3=' '
+read -a p_separada3 <<< "$separador"
+echo "Proceso de comprobacion MD5"
+if [ "5db9862819edb16f9ac0f3b1c406e79d" == $p_separada3 ];
+then
+echo "Imagen Correcta"
+cat $dir_file3 | base64 --decode mystery_img1.txt > mystery_img11.png
+else
+echo "Archivo Corrupto"
+fi
+dir_file4=$(find /home/david -name mystery_img2.txt)
+separador=$(md5sum $dir_file4)
+IFS1=' '
+read -a p_separada4 <<< "$separador"
+echo "Proceso de comprobacion MD5"
+if [ "b091a841da98ca516635f4dfea1dbaf5" == $p_separada4 ];
+then
+echo "Imagen Correcta"
+cat $dir_file4 | base64 --decode mystery_img2.txt > mystery_img22.png
+else
+echo "Archivo Corrupto"
+fi

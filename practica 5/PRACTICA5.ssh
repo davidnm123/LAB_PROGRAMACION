@@ -1,8 +1,0 @@
-#!/bin/bash
-#decodificar
-base64 --decode mystery_img1.txt > img1decoded.jpg
-base64 --decode mystery_img2.txt > img2decoded.jpg
-#codificar
-base64 fcfm.png > fcfmcode.txt
-base64 msg.txt > msgcode.txt
-
