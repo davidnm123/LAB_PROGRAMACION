@@ -1,0 +1,13 @@
+#!/bin/bash
+MI_IP_LOCAL=$(hostname -I)
+MI_IP_PUBLICA=$(curl ifconfig.host)
+SCAN_A_NMAP=$(nmap scanme.nmap.org)
+echo TU ip local es: $MI_IP_LOCAL
+echo Tu ip pública es: $MI_IP_PUBLICA
+echo EL nmap a scanme.nmap.org es: $SCAN_A_NMAP
+echo EL nmap a red privada:
+nmap 192.168.3.*
+echo vulnerabulidad
+nmap --script-vuln scanme.nmap.org
+echo Nmap a ip publica
+nmap 10.0.2.*
