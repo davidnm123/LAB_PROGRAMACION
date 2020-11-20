@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
+import json
+data = {}
+#with open('pass.json') as f:
+#        data = json.load(f)
+# create message object instance
+msg = MIMEMultipart()
+message = "Enviado desde la clase de las 12pm."
+
+# setup the parameters of the message
+msg['From'] = #'dirección de correo del que se va a enviar'
+archivo=open("correo.txt","r") #archivo que contiene los correos destinatarios
+lista=archivo.readlines()
+numln = 0
+for linea in lista:
+	numln+=1
+	print(numln, linea)
+#	msg = MIMEMultipart()
+#	message = "Enviado desde la clase de las 12pm."
+	msg['To']=linea
+	msg['Subject']="hola"
+#archivo.close()
+#msg['To'] =
+#msg['Subject'] = "Salu2"
+
+# add in the message body
+	msg.attach(MIMEText(message, 'plain'))
+#create server
+	server = smtplib.SMTP('smtp.office365.com:587')
+
+	server.starttls()
+
+# Login Credentials for sending the mail
+	server.login( #correo de donde se va a enviar , contraseña)
+
+# send the message via the server.
+	server.sendmail(msg['From'], msg['To'], msg.as_string())
+
+	server.quit()
+	print("successfully sent email to %s:" % (msg['To']))
+archivo.close()
